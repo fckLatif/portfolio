@@ -1,6 +1,6 @@
 import * as c from './components/index'
 
-function App() {
+const App = () => {
   return (
     <c.Logo text='creep' />
   );
