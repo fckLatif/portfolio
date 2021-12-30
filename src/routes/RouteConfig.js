@@ -19,9 +19,6 @@ let RouteConfig = [
 				element: <Contact />
 			}
 		]
-	},
-	{
-
 	}
 ];
 
