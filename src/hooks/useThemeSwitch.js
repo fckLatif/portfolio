@@ -1,7 +1,10 @@
-import { useEffect, useState } from 'react';
+import { 
+	useEffect, 
+	useState 
+} from 'react';
 
 export const useThemeSwitch = () => {
-	const [theme, setTheme] = useState('light');
+	const [theme, setTheme] = useState('main');
 	const [componentMounted, setComponentMounted] = useState(false);
 	const setMode = (mode) => {
 		window.localStorage.setItem('theme', mode);
@@ -9,20 +12,20 @@ export const useThemeSwitch = () => {
 	};
 
 	const toggleTheme = () => {
-		theme === 'light'
-			? setMode('dark')
-			: setMode('light');
+		theme === 'main'
+			? setMode('alternative')
+			: setMode('main');
 	};
 
 	useEffect(() => {
 		const localTheme = window.localStorage.getItem('theme');
 		window.matchMedia &&
-			window.matchMedia('(prefers-color-scheme: dark)').matches &&
+			window.matchMedia('(prefers-color-scheme: main)').matches &&
 			!localTheme
-			? setMode('dark')
+			? setMode('alternative')
 			: localTheme
 				? setTheme(localTheme)
-				: setMode('light');
+				: setMode('main');
 		setComponentMounted(true);
 	}, []);
 

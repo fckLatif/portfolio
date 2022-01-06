@@ -1,21 +1,21 @@
 import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { StyledNavItem } from '../styled/StyledA';
 
 export const ThemeSwitcher = (props) => {
-	const isDark = props.theme === 'dark';
+	const isMain = props.theme === 'main';
 
 	const ThemeIcon = () => {
-		return isDark
-			? <FontAwesomeIcon icon={props.lightIcon} />
-			: <FontAwesomeIcon icon={props.darkIcon} />;
+		return isMain
+			? <FontAwesomeIcon className='nav-icon' icon={props.altIcon} />
+			: <FontAwesomeIcon className='nav-icon' icon={props.mainIcon} />;
 	};
 
 	return (
-		<StyledNavItem href="#" darkTheme={isDark} onClick={props.toggleTheme}>
+		<span className='nav-item' tabIndex={0} onClick={props.toggleTheme}>
 			<ThemeIcon />
-		</StyledNavItem>
+			<span className='nav-content'>{props.content}</span>
+		</span>
 	);
 };
 
