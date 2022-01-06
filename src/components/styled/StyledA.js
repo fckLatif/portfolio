@@ -4,7 +4,6 @@ export const StyledNavItem = styled.a`
 	font-size: 2rem;
 	color: ${({ theme }) => theme.color15};
 	padding: 0.5em;
-	// display: flex;
 	justify-content: middle;
 	align-items: center;
 	

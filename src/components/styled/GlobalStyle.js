@@ -1,25 +1,75 @@
 import { createGlobalStyle } from 'styled-components';
+import {
+	StyledNavMobile,
+	StyledNav
+} from './StyledNav';
+import { StyledSection } from './StyledSection';
 
 export const GlobalStyle = createGlobalStyle`
-  *,
-  *::after,
-  *::before {
-    box-sizing: border-box;
-  }
+	*,
+	*::after,
+	*::before {
+		box-sizing: border-box;
+	}
 
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-  }
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+	}
 
-  body {
-    background: ${({ theme }) => theme.color01};
-    color: ${({ theme }) => theme.color15};
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+	body {
+		background: ${({ theme }) => theme.color06};
+		color: ${({ theme }) => theme.color01};
+		font-family: ${({ theme }) => theme.font01};
+		-moz-osx-font-smoothing: grayscale;
+		position: relative;
+		-webkit-font-smoothing: antialiased;
+		-webkit-text-size-adjust: 100%;
+
+		${StyledNavMobile} {
+			transform: translate3D(-270px,0,0);
+			opacity: 0;
+			pointer-events: none;
+			user-select: none;
+		}
+
+		${StyledSection} {
+			transform: translate3D(0,0,0);
+		}
+
+		${StyledSection},
+		${StyledNavMobile} {
+			transition: all 400ms cubic-bezier(0.46, 0.01, 0.32, 1) 0ms;
+		}
+
+		${StyledNav} {
+			&:last-child {
+				display: inline;
+			}
+		}
+
+		&.open {
+			${StyledNavMobile} {
+				transform: translate3D(0,0,0);
+				opacity: 1;
+				pointer-events: all;
+			}
+
+			${StyledNav} {
+				.nav-item {
+					&:last-child {
+						display: none;
+					}
+				}
+			}
+
+			${StyledSection} {
+				transform: translate3D(270px,0,0);
+			}
+		}
+	}
 `;
 
 export default GlobalStyle;
