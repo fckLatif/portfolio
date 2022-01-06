@@ -1,20 +1,29 @@
+import { NavContent } from './NavContent'
 import {
-	Link,
-	NavLink,
-} from "react-router-dom";
+	StyledNav,
+	StyledNavMobile
+} from '../styled/StyledNav'
+import NavOpener from './NavOpener';
+import NavLogo from './NavLogo'
 
-const NavBar = (props) => {
+export const NavBar = (props) => {
 	return (
-		<div>
-			<nav>
-				<Link to="/">Home</Link>
-				<NavLink to="/about" activeclassname="active" >About</NavLink>
-				<NavLink to="/contact" activeclassname="active" >Contact</NavLink>
-				{props.children}
-			</nav>
-		</div>
-
+		<StyledNav>
+			<NavOpener content='Menu' />
+			<NavLogo to='/' content='Latif' />
+			<span className="main-nav">
+				<NavContent />
+			</span>
+			{props.children}
+		</StyledNav>
 	);
 }
 
-export default NavBar
+export const NavBarMobile = (props) => {
+	return (
+		<StyledNavMobile>
+			<NavContent />
+			{props.children}
+		</StyledNavMobile>
+	);
+}
