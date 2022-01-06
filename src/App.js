@@ -1,27 +1,32 @@
-import React from "react";
+import React from 'react';
 
 import useThemeSwitch from './hooks/useThemeSwitch'
-import {
-	useRoutes
-} from "react-router-dom";
+import { useRoutes } from 'react-router-dom';
 
 import RouteConfig from './routes/RouteConfig';
 
-import { mainTheme, lightTheme } from './components/Themes/Theme';
+import {
+	mainTheme,
+	altTheme
+} from './components/Themes/Theme';
 import { ThemeProvider } from 'styled-components';
 import ThemeSwitcher from './components/Themes/ThemeSwitcher';
 import GlobalStyle from './components/styled/GlobalStyle';
-import NavBar from './components/Navigation/NavBar.js'
+import {
+	NavBar,
+	NavBarMobile
+} from './components/Navigation/NavBar.js'
+import { StyledSection } from "./components/styled/StyledSection";
+
 
 import {
 	faSun as Sun,
 	faMoon as Moon,
 } from '@fortawesome/free-solid-svg-icons';
 
-
 const App = () => {
 	const [theme, toggleTheme, componentMounted] = useThemeSwitch();
-	const themeMode = theme === 'dark' ? mainTheme : lightTheme;
+	const themeMode = theme === 'main' ? mainTheme : altTheme;
 
 	let routing = useRoutes(RouteConfig);
 
@@ -30,16 +35,27 @@ const App = () => {
 		: (
 			<ThemeProvider theme={themeMode}>
 				<GlobalStyle />
-				<NavBar>
+				<StyledSection>
+					<NavBar>
+						<ThemeSwitcher
+							theme={theme}
+							toggleTheme={toggleTheme}
+							altIcon={Moon}
+							mainIcon={Sun}
+							content='Themify'
+						/>
+					</NavBar>
+					{routing}
+				</StyledSection>
+				<NavBarMobile>
 					<ThemeSwitcher
 						theme={theme}
 						toggleTheme={toggleTheme}
-						lightIcon={Moon}
-						darkIcon={Sun}
+						altIcon={Moon}
+						mainIcon={Sun}
+						content='Themify'
 					/>
-				</NavBar>
-
-				{routing}
+				</NavBarMobile>
 			</ThemeProvider>
 		);
 }
