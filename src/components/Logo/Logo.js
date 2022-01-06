@@ -2,6 +2,6 @@ import { StyledLogo } from '../styled/StyledH1';
 
 export const Logo = (props) => {
 	return (
-		<StyledLogo>{props.text}</StyledLogo>
+		<StyledLogo>{props.content}</StyledLogo>
 	);
 }
