@@ -3,8 +3,13 @@ import Contact from './Contact';
 import About from './About';
 import Projects from './Projects'
 import PageNotFound from './PageNotFound';
+import SignIn from './SignIn';
+import Admin from './Admin';
+import SignOut from './SignOut';
 
-let RouteConfig = [
+import { Navigate } from 'react-router-dom';
+
+const RouteConfig = ({isAuth}) => [
 	{
 		path: '/',
 		children: [
@@ -23,6 +28,18 @@ let RouteConfig = [
 			{
 				path: '/contact',
 				element: <Contact />
+			},
+			{
+				path: '/signin',
+				element: isAuth ? <Navigate to='/admin' /> : <SignIn />
+			},
+			{
+				path: '/signout',
+				element: isAuth ? <SignOut /> : <Navigate to='/signin' />
+			},
+			{
+				path: '/admin',
+				element: isAuth ? <Admin /> : <Navigate to='/signin' />,
 			}
 		],
 	},
