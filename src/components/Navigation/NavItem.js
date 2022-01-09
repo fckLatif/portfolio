@@ -1,22 +1,19 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const NavItem = (props) => {
-	let leftIcon = !props.leftIcon
-		? <span></span>
-		: <span><FontAwesomeIcon className='nav-icon' icon={props.leftIcon} /></span>
-
-	let rightIcon = !props.rightIcon
-		? <span></span>
-		: <span><FontAwesomeIcon className='nav-icon' icon={props.rightIcon} /></span>
+	const LeftIcon = () => {
+		return !props.icon
+		? null
+		: <span><FontAwesomeIcon className='nav-icon' icon={props.icon} /></span>
+	}
 
 	return (
-		<NavLink to={props.to} className='nav-item'>
-			{leftIcon}
+		<Link to={props.to} className='nav-item'>
+			<LeftIcon icon={props.icon}/>
 			<span className='nav-content'>{props.content}</span>
-			{rightIcon}
-		</NavLink>
+		</Link>
 	);
 }
 

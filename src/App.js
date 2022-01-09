@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {
+	useState
+} from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase';
 
 import useThemeSwitch from './hooks/useThemeSwitch'
 import { useRoutes } from 'react-router-dom';
@@ -10,53 +14,51 @@ import {
 	altTheme
 } from './components/Themes/Theme';
 import { ThemeProvider } from 'styled-components';
-import ThemeSwitcher from './components/Themes/ThemeSwitcher';
 import GlobalStyle from './components/styled/GlobalStyle';
-import {
-	NavBar,
-	NavBarMobile
-} from './components/Navigation/NavBar.js'
+import NavBar from './components/Navigation/NavBar.js'
 import { StyledSection } from "./components/styled/StyledSection";
-
+import './fontawesome';
 
 import {
-	faSun as Sun,
-	faMoon as Moon,
-} from '@fortawesome/free-solid-svg-icons';
+	themeContext,
+	authContext
+} from './context';
 
 const App = () => {
 	const [theme, toggleTheme, componentMounted] = useThemeSwitch();
 	const themeMode = theme === 'main' ? mainTheme : altTheme;
+	const [user, setUser] = useState({});
+	let isAuth = false;
 
-	let routing = useRoutes(RouteConfig);
+	onAuthStateChanged(auth, (currentUser) => {
+		setUser(currentUser);
+	});
+
+	if (!user?.email) {
+		isAuth = false;
+	} else if (user?.email) {
+		isAuth = true;
+	};
+
+	const routing = useRoutes(RouteConfig({ isAuth }));
 
 	return !componentMounted
 		? <div />
 		: (
-			<ThemeProvider theme={themeMode}>
-				<GlobalStyle />
-				<StyledSection>
-					<NavBar>
-						<ThemeSwitcher
-							theme={theme}
-							toggleTheme={toggleTheme}
-							altIcon={Moon}
-							mainIcon={Sun}
-							content='Themify'
-						/>
-					</NavBar>
-					{routing}
-				</StyledSection>
-				<NavBarMobile>
-					<ThemeSwitcher
-						theme={theme}
-						toggleTheme={toggleTheme}
-						altIcon={Moon}
-						mainIcon={Sun}
-						content='Themify'
-					/>
-				</NavBarMobile>
-			</ThemeProvider>
+			<>
+				<themeContext.Provider value={{ theme, toggleTheme }}>
+					<ThemeProvider theme={themeMode}>
+						<authContext.Provider value={{ isAuth }}>
+							<GlobalStyle />
+							<StyledSection>
+								<NavBar mobile={false} />
+								{routing}
+							</StyledSection>
+							<NavBar mobile={true} />
+						</authContext.Provider>
+					</ThemeProvider>
+				</themeContext.Provider>
+			</>
 		);
 }
 

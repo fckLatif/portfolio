@@ -1,29 +1,32 @@
-import { NavContent } from './NavContent'
+import React from 'react';
+
+import NavContent from './NavContent'
 import {
 	StyledNav,
 	StyledNavMobile
 } from '../styled/StyledNav'
 import NavOpener from './NavOpener';
-import NavLogo from './NavLogo'
+import NavLogo from './NavLogo';
 
-export const NavBar = (props) => {
-	return (
-		<StyledNav>
-			<NavOpener content='Menu' />
-			<NavLogo to='/' content='Latif' />
-			<span className="main-nav">
+const NavBar = (props) => {
+	return props.mobile
+		? (
+			<StyledNavMobile>
 				<NavContent />
-			</span>
-			{props.children}
-		</StyledNav>
-	);
+			</StyledNavMobile>
+		)
+		: (
+			<StyledNav>
+				<NavOpener content='Menu' />
+				<NavLogo to='/' content='Latif' />
+				<span className="main-nav">
+					<NavContent buttons={false} />
+				</span>
+				<span className='nav-buttons'>
+					<NavContent buttons={true} />
+				</span>
+			</StyledNav>
+		);
 }
 
-export const NavBarMobile = (props) => {
-	return (
-		<StyledNavMobile>
-			<NavContent />
-			{props.children}
-		</StyledNavMobile>
-	);
-}
+export default NavBar
