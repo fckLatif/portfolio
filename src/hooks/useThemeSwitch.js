@@ -3,7 +3,7 @@ import {
 	useState 
 } from 'react';
 
-export const useThemeSwitch = () => {
+const useThemeSwitch = () => {
 	const [theme, setTheme] = useState('main');
 	const [componentMounted, setComponentMounted] = useState(false);
 	const setMode = (mode) => {

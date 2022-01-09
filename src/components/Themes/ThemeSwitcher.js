@@ -7,8 +7,8 @@ export const ThemeSwitcher = (props) => {
 
 	const ThemeIcon = () => {
 		return isMain
-			? <FontAwesomeIcon className='nav-icon' icon={props.altIcon} />
-			: <FontAwesomeIcon className='nav-icon' icon={props.mainIcon} />;
+			? <FontAwesomeIcon className='nav-icon slanted' icon={props.mainIcon} />
+			: <FontAwesomeIcon className='nav-icon' icon={props.altIcon} />;
 	};
 
 	return (
