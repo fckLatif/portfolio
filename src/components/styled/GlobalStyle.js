@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 		margin: 0;
 		padding: 0;
 		overflow-x: hidden;
+		height: 100%;
 	}
 
 	body {
@@ -50,6 +51,10 @@ export const GlobalStyle = createGlobalStyle`
 			}
 		}
 
+		.nav-logo {
+			pointer-events: all;
+		}
+
 		&.open {
 			${StyledNavMobile} {
 				transform: translate3D(0,0,0);
@@ -58,15 +63,20 @@ export const GlobalStyle = createGlobalStyle`
 			}
 
 			${StyledNav} {
-				.nav-item {
-					&:last-child {
-						display: none;
-					}
+				.nav-buttons {
+					display: none;
 				}
 			}
 
 			${StyledSection} {
 				transform: translate3D(270px,0,0);
+			}
+
+			@media screen and (max-width: 441px) {
+				.nav-logo {
+					pointer-events: none;
+					user-select: none;
+				}
 			}
 		}
 	}
