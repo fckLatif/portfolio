@@ -13,15 +13,11 @@ const SignIn = () => {
 	const [loginPassword, setLoginPassword] = useState('');
 
 	const doSignIn = async () => {
-		try {
-			await signInWithEmailAndPassword(
-				auth,
-				loginEmail,
-				loginPassword
-			);
-		} catch (error: any) {
-			console.log(error?.message);
-		};
+		await signInWithEmailAndPassword(
+			auth,
+			loginEmail,
+			loginPassword
+		);
 	}
 
 	return (

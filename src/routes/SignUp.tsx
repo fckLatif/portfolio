@@ -13,15 +13,11 @@ const SignUp = () => {
 	const [registerPassword, setRegisterPassword] = useState('');
 
 	const doSignUp = async () => {
-		try {
-			await createUserWithEmailAndPassword(
-				auth,
-				registerEmail,
-				registerPassword
-			);
-		} catch (error: any) {
-			console.log(error?.message);
-		};
+		await createUserWithEmailAndPassword(
+			auth,
+			registerEmail,
+			registerPassword
+		);
 	};
 
 	return (
