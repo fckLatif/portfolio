@@ -27,7 +27,7 @@ const SignUp = () => {
 	return (
 		<>
 			<StyledForm>
-				<h2>Login</h2>
+				<h2>Sign Up</h2>
 				<div id='login_email'>
 					<label
 						htmlFor='auth_email'
