@@ -113,7 +113,13 @@ export const StyledNav = styled.nav`
 
 		.nav-item {
 			&:last-child {
-					padding: 0;
+				padding: 0;
+			}
+		}
+
+		.theme-switcher {
+			>svg {
+				width: 0.9375em;
 			}
 		}
 
