@@ -15,28 +15,26 @@ import {
 } from './components/Themes/Theme';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './components/styled/GlobalStyle';
-import NavBar from './components/Navigation/NavBar.js'
+import NavBar from './components/Navigation/NavBar';
 import { StyledSection } from "./components/styled/StyledSection";
+import AuthContextProvider from './components/Providers/AuthContextProvider';
+import ThemeContextProvider from './components/Providers/ThemeContextProvider';
 import './fontawesome';
 
-import {
-	themeContext,
-	authContext
-} from './context';
 
 const App = () => {
 	const [theme, toggleTheme, componentMounted] = useThemeSwitch();
 	const themeMode = theme === 'main' ? mainTheme : altTheme;
 	const [user, setUser] = useState({});
-	let isAuth = false;
+	let isAuth: boolean = false;
 
 	onAuthStateChanged(auth, (currentUser) => {
-		setUser(currentUser);
+		setUser(currentUser ?? '');
 	});
 
-	if (!user?.email) {
+	if (!user) {
 		isAuth = false;
-	} else if (user?.email) {
+	} else if (user) {
 		isAuth = true;
 	};
 
@@ -46,18 +44,18 @@ const App = () => {
 		? <div />
 		: (
 			<>
-				<themeContext.Provider value={{ theme, toggleTheme }}>
+				<ThemeContextProvider value={{ theme, toggleTheme }}>
 					<ThemeProvider theme={themeMode}>
-						<authContext.Provider value={{ isAuth }}>
+						<AuthContextProvider value={{ isAuth }}>
 							<GlobalStyle />
 							<StyledSection>
 								<NavBar mobile={false} />
 								{routing}
 							</StyledSection>
 							<NavBar mobile={true} />
-						</authContext.Provider>
+						</AuthContextProvider>
 					</ThemeProvider>
-				</themeContext.Provider>
+				</ThemeContextProvider>
 			</>
 		);
 }

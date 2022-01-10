@@ -6,7 +6,7 @@ import {
 const useThemeSwitch = () => {
 	const [theme, setTheme] = useState('main');
 	const [componentMounted, setComponentMounted] = useState(false);
-	const setMode = (mode) => {
+	const setMode = (mode: string) => {
 		window.localStorage.setItem('theme', mode);
 		setTheme(mode);
 	};

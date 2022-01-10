@@ -19,8 +19,8 @@ const SignUp = () => {
 				registerEmail,
 				registerPassword
 			);
-		} catch (error) {
-			console.log(error.message);
+		} catch (error: any) {
+			console.log(error?.message);
 		};
 	};
 

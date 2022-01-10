@@ -1,9 +1,20 @@
-import React from 'react';
+import React, {
+	FC
+} from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
-export const ThemeSwitcher = (props) => {
-	const isMain = props.theme === 'main';
+interface ThemeSwitcherProps {
+	theme: string;
+	mainIcon: IconProp;
+	altIcon: IconProp;
+	toggleTheme: (() => void);
+	content: string;
+}
+
+export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
+	const isMain: boolean = props.theme === 'main';
 
 	const ThemeIcon = () => {
 		return isMain

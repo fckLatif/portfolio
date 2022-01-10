@@ -1,11 +1,12 @@
 import React, {
+	FC,
 	useContext
 } from "react";
 import { authContext } from '../../context'
 
 import NavItem from './NavItem';
 
-const NavAuth = () => {
+const NavAuth: FC = () => {
 	const { isAuth } = useContext(authContext);
 
 	if (isAuth === false) {

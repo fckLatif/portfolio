@@ -1,4 +1,6 @@
-export const mainTheme = {
+import { ThemeStructure } from 'styled-components';
+
+export const mainTheme: ThemeStructure = {
 	color01: '#FFF',
 	color02: '#E0E0E0',
 	color03: '#777',
@@ -9,7 +11,7 @@ export const mainTheme = {
 	font02: '\'Who asks Satan\', serif'
 }
 
-export const altTheme = {
+export const altTheme: ThemeStructure = {
 	color01: '#FFF',
 	color02: '#E0E0E0',
 	color03: '#777',

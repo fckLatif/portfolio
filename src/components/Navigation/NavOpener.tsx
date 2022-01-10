@@ -1,6 +1,14 @@
-import { useState, useEffect } from 'react';
+import {
+	useState,
+	useEffect,
+	FC
+} from 'react';
 
-const NavOpener = (props) => {
+interface NavOpenerProps {
+	content: string;
+}
+
+const NavOpener: FC<NavOpenerProps> = (props) => {
 	const [isOpen, setIsOpen] = useState(false)
 	useEffect(() => {
 		document.body.classList.toggle('open', isOpen);

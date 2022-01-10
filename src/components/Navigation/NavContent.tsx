@@ -1,5 +1,6 @@
 import React, {
-	useContext
+	useContext,
+	FC
 } from 'react'
 import { themeContext } from '../../context'
 
@@ -8,7 +9,11 @@ import '../../fontawesome';
 import NavAuth from './NavAuth';
 import { ThemeSwitcher } from '../Themes/ThemeSwitcher'
 
-const NavContent = (props) => {
+interface NavContentProps {
+	buttons: boolean;
+}
+
+const NavContent: FC<NavContentProps> = (props) => {
 	const { theme, toggleTheme } = useContext(themeContext);
 	return props.buttons
 		? (

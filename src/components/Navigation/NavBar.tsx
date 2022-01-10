@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+	FC
+} from 'react';
 
 import NavContent from './NavContent'
 import {
@@ -8,11 +10,15 @@ import {
 import NavOpener from './NavOpener';
 import NavLogo from './NavLogo';
 
-const NavBar = (props) => {
+interface NavBarProps {
+	mobile: boolean;
+}
+
+const NavBar: FC<NavBarProps> = (props) => {
 	return props.mobile
 		? (
 			<StyledNavMobile>
-				<NavContent />
+				<NavContent buttons={false} />
 			</StyledNavMobile>
 		)
 		: (

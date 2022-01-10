@@ -2,7 +2,7 @@ import React, {
 	useState
 } from 'react';
 import {
-	signInWithEmailAndPassword,
+	signInWithEmailAndPassword
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -19,9 +19,8 @@ const SignIn = () => {
 				loginEmail,
 				loginPassword
 			);
-		} catch (error) {
-			console.log(error.message);
-			return error?.message
+		} catch (error: any) {
+			console.log(error?.message);
 		};
 	}
 
