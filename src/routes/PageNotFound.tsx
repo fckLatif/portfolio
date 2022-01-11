@@ -1,9 +1,9 @@
 const PageNotFound = () => {
 	return (
 		<>
-			<h1>
+			<h2>
 				404
-			</h1>
+			</h2>
 		</>
 	);
 }

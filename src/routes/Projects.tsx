@@ -1,9 +1,9 @@
 const Projects = () => {
 	return (
 		<>
-			<h1>
+			<h2>
 				Projects
-			</h1>
+			</h2>
 		</>
 	);
 }
