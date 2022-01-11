@@ -120,6 +120,7 @@ export const StyledNav = styled.nav`
 		.theme-switcher {
 			>svg {
 				width: 0.9375em;
+				margin-top: 1px;
 			}
 		}
 

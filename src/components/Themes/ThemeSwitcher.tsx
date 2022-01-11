@@ -23,10 +23,13 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = (props) => {
 	};
 
 	return (
-		<span className='nav-item theme-switcher' tabIndex={0} onClick={props.toggleTheme}>
-			<ThemeIcon />
-			<span className='nav-content'>{props.content}</span>
-		</span>
+		<>
+			<button className='nav-item theme-switcher' tabIndex={0} onClick={props.toggleTheme}>
+				<ThemeIcon />
+				<span className='nav-content'>{props.content}</span>
+			</button>
+		</>
+
 	);
 };
 
