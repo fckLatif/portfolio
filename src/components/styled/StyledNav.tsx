@@ -30,6 +30,7 @@ export const StyledNavMobile = styled.nav`
 		font-size: 12px;
 		padding: 8px 0;
 		border-bottom: 1px solid white;
+		text-align: left;
 		
 		&:focus-visible {
 			color: ${({ theme }) => theme.color04};

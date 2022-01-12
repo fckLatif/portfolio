@@ -10,4 +10,5 @@ export const StyledLogo = styled.h1`
 	width: 100px;
 	letter-spacing: 2px;
 	padding: 10px 0;
+	font-weight: 400;
 `;
