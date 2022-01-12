@@ -7,7 +7,6 @@ import {
 
 interface ThemeContextProviderProps {
 	value: any;
-	theme?: string;
 }
 
 const ThemeContextProvider: FC<ThemeContextProviderProps> = (props) => {
