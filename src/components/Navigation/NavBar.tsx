@@ -15,13 +15,14 @@ interface NavBarProps {
 }
 
 const NavBar: FC<NavBarProps> = (props) => {
-	return props.mobile
-		? (
+	if (props.mobile) {
+		return (
 			<StyledNavMobile>
 				<NavContent buttons={false} />
 			</StyledNavMobile>
-		)
-		: (
+		);
+	} else {
+		return (
 			<StyledNav>
 				<NavOpener content='Menu' />
 				<NavLogo to='/' content='Latif' />
@@ -33,6 +34,8 @@ const NavBar: FC<NavBarProps> = (props) => {
 				</span>
 			</StyledNav>
 		);
+
+	}
 }
 
 export default NavBar

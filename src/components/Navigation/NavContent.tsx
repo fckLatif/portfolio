@@ -15,8 +15,9 @@ interface NavContentProps {
 
 const NavContent: FC<NavContentProps> = (props) => {
 	const { theme, toggleTheme } = useContext(themeContext);
-	return props.buttons
-		? (
+
+	if (props.buttons) {
+		return (
 			<>
 				<NavAuth />
 				<ThemeSwitcher
@@ -27,8 +28,9 @@ const NavContent: FC<NavContentProps> = (props) => {
 					content='Themify'
 				/>
 			</>
-		)
-		: (
+		);
+	} else {
+		return (
 			<>
 				<NavItem to='/' content='høme' icon="home" />
 				<NavItem to='/about' content='abøut' icon="user-secret" />
@@ -44,6 +46,7 @@ const NavContent: FC<NavContentProps> = (props) => {
 				/>
 			</>
 		);
-}
+	};
+};
 
 export default NavContent

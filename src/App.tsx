@@ -46,9 +46,8 @@ const App = () => {
 
 	const routing = useRoutes(RouteConfig({ isAuth }));
 
-	return !componentMounted
-		? <div />
-		: (
+	if (componentMounted) {
+		return (
 			<>
 				<ThemeContextProvider value={{ theme, toggleTheme }}>
 					<ThemeProvider theme={themeMode}>
@@ -64,6 +63,9 @@ const App = () => {
 				</ThemeContextProvider>
 			</>
 		);
+	} else {
+		return <div />
+	}
 }
 
 export default App;
