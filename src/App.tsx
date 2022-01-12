@@ -2,6 +2,7 @@ import React, {
 	useState
 } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
+import { User } from '@firebase/auth-types';
 import { auth } from './firebase';
 
 import useThemeSwitch from './hooks/useThemeSwitch'
@@ -21,21 +22,26 @@ import AuthContextProvider from './components/Providers/AuthContextProvider';
 import ThemeContextProvider from './components/Providers/ThemeContextProvider';
 import './fontawesome';
 
+interface UserOverride {
+	uid?: string;
+}
+
+type UserType = UserOverride | User | null;
 
 const App = () => {
 	const [theme, toggleTheme, componentMounted] = useThemeSwitch();
 	const themeMode = theme === 'main' ? mainTheme : altTheme;
-	const [user, setUser] = useState({});
+	const [user, setUser] = useState({} as UserType);
 	let isAuth: boolean = false;
 
 	onAuthStateChanged(auth, (currentUser) => {
-		setUser(currentUser ?? '');
+		setUser(currentUser);
 	});
 
-	if (!user) {
-		isAuth = false;
-	} else if (user) {
+	if (user?.uid) {
 		isAuth = true;
+	} else {
+		isAuth = false;
 	};
 
 	const routing = useRoutes(RouteConfig({ isAuth }));
