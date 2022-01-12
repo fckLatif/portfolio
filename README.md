@@ -1,4 +1,6 @@
-## My personal online portfolio. Powered by [React](https://reactjs.org/) and [GSAP](https://greensock.com/gsap/).
+## My personal online portfolio. Powered by [React](https://reactjs.org/).
+
+<!-- Can be found at [latif.dev](https://latif.dev/). -->
 
 Current color palette:
 
