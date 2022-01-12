@@ -1,14 +1,14 @@
 import { createContext } from "react";
 
-interface AuthProps {
+interface AuthContextProps {
 	isAuth: boolean;
 }
 
-interface ThemeProps {
+interface ThemeContextProps {
 	theme: string;
 	toggleTheme: (() => void);
 	componentMounted: boolean;
 }
 
-export const themeContext = createContext({} as ThemeProps);
-export const authContext = createContext({} as AuthProps);
+export const themeContext = createContext({} as ThemeContextProps);
+export const authContext = createContext({} as AuthContextProps);
