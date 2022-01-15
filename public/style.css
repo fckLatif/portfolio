@@ -1,0 +1,110 @@
+@font-face {
+	font-family: "Bembo Book";
+	font-weight: 400;
+	font-style: normal;
+	src: url("https://fonts.shopifycdn.com/bembo_book/bembobook_n4.8da691c1d96e22b482c66684b2147e382b6f8d3a.woff2?h1=c2tvb3Rza29vdHNrb290LmNvbQ&h2=c2tvb3RoYW5kbWVkb3ducy5jb20&hmac=2b193a2eac0b71e85e63f337dacdde9656279356ae14da85d1c7630babbab01e") format("woff2"),
+		url("https://fonts.shopifycdn.com/bembo_book/bembobook_n4.570284734f42a26c330fca9503f1e2e831cd33ea.woff?h1=c2tvb3Rza29vdHNrb290LmNvbQ&h2=c2tvb3RoYW5kbWVkb3ducy5jb20&hmac=0b9ef657599b2a0d2de08183b906e9f37a5cf61c3f18ad486ed6a7ac84d26a57") format("woff");
+}
+
+body {
+	background: #000;
+	margin: 0;
+}
+
+#root:not(:empty)+#pl-cube-wrapper {
+	display: none;
+}
+
+#pl-cube-wrapper {
+	width: 100%;
+	height: 100vh;
+	display: grid;
+	place-items: center;
+}
+
+.pl-cube-grid {
+	width: 40px;
+	height: 40px;
+	margin: 100px auto;
+}
+
+.pl-cube-grid .pl-cube {
+	width: 33%;
+	height: 33%;
+	background-color: #fff;
+	float: left;
+	animation: pl-cubeGridScaleDelay 1.3s infinite ease-in-out;
+}
+
+.pl-cube-grid .pl-cube1 {
+	animation-delay: 0.2s;
+}
+
+.pl-cube-grid .pl-cube2 {
+	animation-delay: 0.3s;
+}
+
+.pl-cube-grid .pl-cube3 {
+	animation-delay: 0.4s;
+}
+
+.pl-cube-grid .pl-cube4 {
+	animation-delay: 0.1s;
+}
+
+.pl-cube-grid .pl-cube5 {
+	animation-delay: 0.2s;
+}
+
+.pl-cube-grid .pl-cube6 {
+	animation-delay: 0.3s;
+}
+
+.pl-cube-grid .pl-cube7 {
+	animation-delay: 0s;
+}
+
+.pl-cube-grid .pl-cube8 {
+	animation-delay: 0.1s;
+}
+
+.pl-cube-grid .pl-cube9 {
+	animation-delay: 0.2s;
+}
+
+@keyframes pl-cubeGridScaleDelay {
+
+	0%,
+	70%,
+	100% {
+		transform: scale3D(1, 1, 1);
+	}
+
+	35% {
+		transform: scale3D(0, 0, 1);
+	}
+}
+
+[data-aos=fade-up] {
+	transform: translate3d(0, 100px, 0);
+}
+
+[data-aos^=fade][data-aos^=fade] {
+	opacity: 0;
+	transition-property: opacity, transform;
+}
+
+[data-aos][data-aos][data-aos-duration="400"],
+body[data-aos-duration="400"] [data-aos] {
+	transition-duration: 400ms;
+}
+
+[data-aos][data-aos][data-aos-easing=ease],
+body[data-aos-easing=ease] [data-aos] {
+	transition-timing-function: ease;
+}
+
+[data-aos^=fade][data-aos^=fade].aos-animate {
+	opacity: 1;
+	transform: translateZ(0);
+}
