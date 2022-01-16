@@ -1,8 +1,8 @@
 import React, {
-	useState
+	useState,
+	useEffect
 } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { User } from '@firebase/auth-types';
 import { auth } from './firebase';
 
 import useThemeSwitch from './hooks/useThemeSwitch'
@@ -17,10 +17,13 @@ import {
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './components/styled/GlobalStyle';
 import NavBar from './components/Navigation/NavBar';
-import { StyledSection } from "./components/styled/StyledSection";
+import { StyledSection } from './components/styled/StyledSection';
 import AuthContextProvider from './components/Providers/AuthContextProvider';
 import ThemeContextProvider from './components/Providers/ThemeContextProvider';
+import Header from './components/Header/Header';
 import './fontawesome';
+
+import { User } from '@firebase/auth-types';
 
 interface UserOverride {
 	uid?: string;
@@ -31,12 +34,15 @@ type UserType = UserOverride | User | null;
 const App = () => {
 	const [theme, toggleTheme, componentMounted] = useThemeSwitch();
 	const themeMode = theme === 'main' ? mainTheme : altTheme;
-	const [user, setUser] = useState({} as UserType);
+	const [user, setUser] = useState<UserType>({});
+
 	let isAuth: boolean = false;
 
-	onAuthStateChanged(auth, (currentUser) => {
-		setUser(currentUser);
-	});
+	useEffect(() => {
+		onAuthStateChanged(auth, (currentUser) => {
+			setUser(currentUser);
+		});
+	}, [isAuth, user?.uid]);
 
 	if (user?.uid) {
 		isAuth = true;
@@ -54,7 +60,9 @@ const App = () => {
 						<AuthContextProvider value={{ isAuth }}>
 							<GlobalStyle />
 							<StyledSection>
-								<NavBar mobile={false} />
+								<Header>
+									<NavBar mobile={false} />
+								</Header>
 								{routing}
 							</StyledSection>
 							<NavBar mobile={true} />
