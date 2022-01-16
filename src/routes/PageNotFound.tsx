@@ -1,9 +1,11 @@
+import { StyledPageTitle } from "../components/styled/StyledH2";
+
 const PageNotFound = () => {
 	return (
 		<>
-			<h2>
+			<StyledPageTitle>
 				404
-			</h2>
+			</StyledPageTitle>
 		</>
 	);
 }

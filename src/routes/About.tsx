@@ -1,9 +1,12 @@
+import ChildSection from '../components/Section/ChildSection';
+import { StyledPageTitle } from '../components/styled/StyledH2';
+
 const About = () => {
 	return (
 		<>
-			<h2>
-				About
-			</h2>
+			<StyledPageTitle>abøut</StyledPageTitle>
+			<ChildSection>
+			</ChildSection>
 		</>
 	);
 }

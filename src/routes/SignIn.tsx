@@ -6,7 +6,8 @@ import {
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
-import { StyledForm } from '../components/styled/StyledDiv'
+import { StyledForm } from '../components/styled/StyledDiv';
+import { StyledPageTitle } from '../components/styled/StyledH2';
 
 const SignIn = () => {
 	const [loginEmail, setLoginEmail] = useState('');
@@ -23,7 +24,7 @@ const SignIn = () => {
 	return (
 		<>
 			<StyledForm>
-				<h2>Login</h2>
+				<StyledPageTitle>sign in</StyledPageTitle>
 				<div id='login_email'>
 					<label
 						htmlFor='auth_email'

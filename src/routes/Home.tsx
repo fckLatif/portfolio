@@ -1,9 +1,11 @@
+import ProjectsContent from './projects/ProjectsContent';
+import { StyledPageTitle } from '../components/styled/StyledH2';
+
 const Home = () => {
 	return (
 		<>
-			<h2>
-				Home
-			</h2>
+			<StyledPageTitle>høme</StyledPageTitle>
+			<ProjectsContent />
 		</>
 	);
 }
