@@ -8,7 +8,8 @@ export const mainTheme: ThemeStructure = {
 	color05: '#0038FF',
 	color06: '#000',
 	font01: '\'Glegoo\', serif',
-	font02: '\'Who asks Satan\', serif'
+	font02: '\'Who asks Satan\', serif',
+	font03: '\'Bembo Book\', serif'
 }
 
 export const altTheme: ThemeStructure = {
@@ -19,5 +20,6 @@ export const altTheme: ThemeStructure = {
 	color05: '#03FF00',
 	color06: '#000',
 	font01: '\'Glegoo\', serif',
-	font02: '\'Who asks Satan\', serif'
+	font02: '\'Who asks Satan\', serif',
+	font03: '\'Bembo Book\', serif'
 }

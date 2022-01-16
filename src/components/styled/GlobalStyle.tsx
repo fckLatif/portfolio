@@ -19,6 +19,10 @@ export const GlobalStyle = createGlobalStyle`
 		overflow-x: hidden;
 		height: 100%;
 	}
+	
+	html {
+		scroll-behavior: smooth;
+	}
 
 	body {
 		background: ${({ theme }) => theme.color06};
@@ -43,12 +47,6 @@ export const GlobalStyle = createGlobalStyle`
 		${StyledSection},
 		${StyledNavMobile} {
 			transition: all 400ms cubic-bezier(0.46, 0.01, 0.32, 1) 0ms;
-		}
-
-		${StyledNav} {
-			&:last-child {
-				display: inline;
-			}
 		}
 
 		.nav-logo {

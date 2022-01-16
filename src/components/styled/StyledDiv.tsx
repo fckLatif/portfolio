@@ -19,7 +19,9 @@ export const StyledForm = styled.div`
 	}
 
 	input[type='email'],
-	input[type='password'] {
+	input[type='password'],
+	input[type='text'],
+	select {
 		width: 100%;
 		border: 1px solid ${({ theme }) => theme.color06};
 		height: 48px;

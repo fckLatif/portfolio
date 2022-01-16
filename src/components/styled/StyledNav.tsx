@@ -54,13 +54,11 @@ export const StyledNavMobile = styled.nav`
 
 export const StyledNav = styled.nav`
 	position: relative;
-	width: 100%;
+	width: 98%;
+	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-	padding: 10px;
-	background: ${({ theme }) => theme.color04};
-	color: ${({ theme }) => theme.color06};
 	min-height: 105px;
 
 	.main-nav {

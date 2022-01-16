@@ -12,5 +12,6 @@ declare module 'styled-components' {
 		color06: string;
 		font01: string;
 		font02: string;
+		font03: string;
 	}
 }
