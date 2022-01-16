@@ -9,7 +9,7 @@ import NavItem from './NavItem';
 const NavAuth: FC = () => {
 	const { isAuth } = useContext(authContext);
 
-	if (isAuth === false) {
+	if (!isAuth) {
 		return (
 			<span className="nav-auth">
 				<NavItem to='/signin' content='sign in' icon="fingerprint" />
