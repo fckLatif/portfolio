@@ -12,7 +12,7 @@ const ProjectsAssembly: FC = () => {
 			{projects.map((project: any) => {
 				const RepositoryLink = () => {
 					if (project.repository_link) {
-						return <a href={project.repository_link}>repository</a>;
+						return <a href={project.repository_link} target='_blank' rel="noreferrer">repository</a>;
 					} else {
 						return null;
 					}

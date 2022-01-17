@@ -5,6 +5,8 @@ import {
 import {
 	collection,
 	getDocs,
+	query,
+	orderBy
 } from 'firebase/firestore';
 import { db } from '../../firebase';
 
@@ -15,11 +17,11 @@ import ProjectsContextProvider from '../../components/Providers/ProjectsContextP
 
 const ProjectsContent = () => {
 	const [projects, setProjects] = useState<any[]>([]);
-	const projectsCollectionRef = collection(db, 'projects');
+	const projectsCollectionRef = query(collection(db, 'projects'), orderBy('timestamp'));
 
 	const getProjects = async () => {
 		const data = await getDocs(projectsCollectionRef);
-		setProjects(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+		setProjects(data.docs.reverse().map((doc) => ({ ...doc.data(), id: doc.id })));
 	};
 
 	useEffect(() => {
