@@ -17,11 +17,11 @@ import ProjectsContextProvider from '../../components/Providers/ProjectsContextP
 
 const ProjectsContent = () => {
 	const [projects, setProjects] = useState<any[]>([]);
-	const projectsCollectionRef = query(collection(db, 'projects'), orderBy('timestamp'));
+	const projectsCollectionRef = query(collection(db, 'projects'), orderBy('timestamp', 'desc'));
 
 	const getProjects = async () => {
 		const data = await getDocs(projectsCollectionRef);
-		setProjects(data.docs.reverse().map((doc) => ({ ...doc.data(), id: doc.id })));
+		setProjects(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 	};
 
 	useEffect(() => {
