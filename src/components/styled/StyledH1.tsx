@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledLogo = styled.h1`
 	font-family: ${({ theme }) => theme.font02};
-	${({ theme }) => theme.color06}
+	color: ${({ theme }) => theme.color04};
 	font-weight: 400;
 	margin-block-start: 0;
     margin-block-end: 0;

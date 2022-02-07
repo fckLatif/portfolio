@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledForm = styled.div`
+export const StyledForm = styled.form`
 	padding: 0 40px;
 	width: 100%;
 
@@ -15,7 +15,7 @@ export const StyledForm = styled.div`
 		font-size: 12px;
 		margin-bottom: 5px;
 		text-transform: capitalize;
-		color: ${({ theme }) => theme.color05};
+		color: ${({ theme }) => theme.color06};
 	}
 
 	input[type='email'],
@@ -23,7 +23,7 @@ export const StyledForm = styled.div`
 	input[type='text'],
 	select {
 		width: 100%;
-		border: 1px solid ${({ theme }) => theme.color06};
+		border: 1px solid ${({ theme }) => theme.color07};
 		height: 48px;
 		line-height: 48px;
 		padding: 0;
@@ -46,7 +46,7 @@ export const StyledForm = styled.div`
 		border: none;
 		transition: background .3s ease, color .3s ease;
 		-webkit-appearance: none;
-		color: ${({ theme }) => theme.color06};
+		color: ${({ theme }) => theme.color07};
 		display: inline-block;
 		font-family: Glegoo !important;
 		font-weight: 400;
@@ -59,7 +59,7 @@ export const StyledForm = styled.div`
 		line-height: 48px;
 
 		&:hover {
-			background: ${({ theme }) => theme.color05};
+			background: ${({ theme }) => theme.color06};
 		}
 	}
 

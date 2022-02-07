@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { StyledLogo } from './StyledH1';
+
 export const StyledChildSection = styled.section`
 	width: 96%;
 	display: grid;
@@ -21,13 +23,13 @@ export const StyledChildSection = styled.section`
 		font-weight: 700;
 		justify-content: space-between;
 
-		color: ${({ theme }) => theme.color04};
+		color: ${({ theme }) => theme.color05};
 		background: none;
-		border: 2px solid ${({ theme }) => theme.color04};
+		border: 2px solid ${({ theme }) => theme.color05};
 		padding: 10px;
-		background: ${({ theme }) => theme.color06};
+		background: ${({ theme }) => theme.color07};
 
-		background: linear-gradient(to left, ${({ theme }) => theme.color06} 50%, ${({ theme }) => theme.color04} 50%) right;
+		background: linear-gradient(to left, ${({ theme }) => theme.color07} 50%, ${({ theme }) => theme.color05} 50%) right;
 		background-size: 200%;
 		transition: background 400ms ease-out;
 
@@ -50,22 +52,22 @@ export const StyledChildSection = styled.section`
 		a {
 			text-decoration: none;
 			text-transform: capitalize;
-			color: ${({ theme }) => theme.color06};
+			color: ${({ theme }) => theme.color07};
 			width: fit-content;
 			padding: 0.5em 1em;
 
-			background: linear-gradient(to left, ${({ theme }) => theme.color04} 50%, ${({ theme }) => theme.color06} 50%) right;
+			background: linear-gradient(to left, ${({ theme }) => theme.color05} 50%, ${({ theme }) => theme.color07} 50%) right;
 			background-size: 200%;
 			transition: 300ms ease-out;
 		}
 
 		&:hover,
 		&:focus-within {
-			color: ${({ theme }) => theme.color06};
+			color: ${({ theme }) => theme.color07};
 			background-position: left;
 
 			a {
-				color: ${({ theme }) => theme.color05};
+				color: ${({ theme }) => theme.color06};
 				background-position: left;
 			}
 		}
@@ -106,15 +108,19 @@ export const StyledSection = styled.section`
 	}
 
 	.cover-header {
-		background: ${({ theme }) => theme.color06};
+		background: ${({ theme }) => theme.color07};
 		color: ${({ theme }) => theme.color01};
 		transition: background-color 1s linear;
+
+		${StyledLogo} {
+			color: ${({ theme }) => theme.color01};
+		}
 	}
 
 	.scroll-header {
 		position: relative;
-		background: ${({ theme }) => theme.color04};
-		color: ${({ theme }) => theme.color06};
+		background: ${({ theme }) => theme.color05};
+		color: ${({ theme }) => theme.color07};
 	}
 
 	.project-page {

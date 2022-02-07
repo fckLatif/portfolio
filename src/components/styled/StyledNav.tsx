@@ -10,7 +10,7 @@ export const StyledNavMobile = styled.nav`
 	flex-direction: column;
 	justify-content: flex-start;
 	padding: 10px 15px;
-	background: ${({ theme }) => theme.color06};
+	background: ${({ theme }) => theme.color07};
 	color: ${({ theme }) => theme.color01};
 
 	z-index: 0;
@@ -33,7 +33,7 @@ export const StyledNavMobile = styled.nav`
 		text-align: left;
 		
 		&:focus-visible {
-			color: ${({ theme }) => theme.color04};
+			color: ${({ theme }) => theme.color05};
 		}
 	}
 
@@ -87,7 +87,7 @@ export const StyledNav = styled.nav`
 		}
 
 		&:focus-visible {
-			outline: 2px solid ${({ theme }) => theme.color06};
+			outline: 2px solid ${({ theme }) => theme.color07};
 		}
 	}
 
