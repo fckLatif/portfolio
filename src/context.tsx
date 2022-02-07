@@ -12,8 +12,9 @@ interface ThemeContextProps {
 
 interface ProjectsContextProps {
 	projects: any[];
+	setProjects: (value: any) => void;
 }
 
 export const themeContext = createContext({} as ThemeContextProps);
 export const authContext = createContext({} as AuthContextProps);
-export const projectsContext = createContext({} as ProjectsContextProps)
+export const projectsContext = createContext({} as ProjectsContextProps);
