@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		background: ${({ theme }) => theme.color06};
+		background: ${({ theme }) => theme.color07};
 		color: ${({ theme }) => theme.color01};
 		font-family: ${({ theme }) => theme.font01};
 		-moz-osx-font-smoothing: grayscale;
