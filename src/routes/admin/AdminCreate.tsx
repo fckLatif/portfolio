@@ -4,20 +4,15 @@ import React, {
 import {
 	collection,
 	addDoc,
+	serverTimestamp
 } from 'firebase/firestore';
 import { db } from '../../firebase'
 
 import { useNavigate } from 'react-router-dom';
-import { StyledForm } from '../../components/styled/StyledDiv'
+import { StyledForm } from '../../components/styled/StyledForm'
 import { StyledPageTitle } from '../../components/styled/StyledH2';
 
-const str2bool = (value: string) => {
-	if (value && typeof value === "string") {
-		if (value.toLowerCase() === "true") return true;
-		if (value.toLowerCase() === "false") return false;
-	}
-	return value;
-}
+import { str2bool } from './AdminHome';
 
 const AdminCreate = () => {
 	const projectsCollectionRef = collection(db, 'projects');
@@ -25,24 +20,28 @@ const AdminCreate = () => {
 	const [repoLink, setRepoLink] = useState<string>('');
 	const [description, setDescription] = useState<string>('');
 	const [content, setContent] = useState<string>('');
+	const [visibility, setVisibility] = useState<string | boolean>(true);
 	const [caseStudy, setCaseStudy] = useState<string | boolean>(true);
 	const navigate = useNavigate();
 
-	const createProject = async () => {
+	const createProject = async (e: any) => {
+		e.preventDefault();
 		await addDoc(projectsCollectionRef, {
 			title: title,
 			repository_link: repoLink,
 			description: description,
 			content: content,
-			case_study: caseStudy
+			case_study: caseStudy,
+			visible: visibility,
+			timestamp: serverTimestamp()
 		});
 
-		navigate('/admin')
+		navigate('/admin');
 	};
 
 	return (
 		<>
-			<StyledForm>
+			<StyledForm onSubmit={createProject}>
 				<StyledPageTitle>create database entry</StyledPageTitle>
 				<div id='create_title'>
 					<label
@@ -115,7 +114,6 @@ const AdminCreate = () => {
 					<input
 						type={'submit'}
 						value={'Create Project'}
-						onClick={createProject}
 					/>
 				</div>
 			</StyledForm>
