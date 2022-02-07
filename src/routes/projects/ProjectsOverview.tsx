@@ -1,7 +1,7 @@
 import { StyledPageTitle } from "../../components/styled/StyledH2";
 import ProjectsContent from "./ProjectsContent";
 
-const Projects = () => {
+const ProjectsOverview = () => {
 	return (
 		<>
 			<StyledPageTitle>prøjects</StyledPageTitle>
@@ -12,4 +12,4 @@ const Projects = () => {
 	);
 }
 
-export default Projects
+export default ProjectsOverview

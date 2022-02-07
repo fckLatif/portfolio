@@ -22,6 +22,7 @@ import AuthContextProvider from './components/Providers/AuthContextProvider';
 import ThemeContextProvider from './components/Providers/ThemeContextProvider';
 import Header from './components/Header/Header';
 import './fontawesome';
+import ProjectsContextProvider from './components/Providers/ProjectsContextProivder';
 
 import { User } from '@firebase/auth-types';
 
@@ -32,6 +33,7 @@ interface UserOverride {
 type UserType = UserOverride | User | null;
 
 const App = () => {
+	const [projects, setProjects] = useState<any[]>([]);
 	const [theme, toggleTheme, componentMounted] = useThemeSwitch();
 	const themeMode = theme === 'main' ? mainTheme : altTheme;
 	const [user, setUser] = useState<UserType>({});
@@ -63,7 +65,9 @@ const App = () => {
 								<Header>
 									<NavBar mobile={false} />
 								</Header>
-								{routing}
+								<ProjectsContextProvider value={{ projects, setProjects }}>
+									{routing}
+								</ProjectsContextProvider>
 							</StyledSection>
 							<NavBar mobile={true} />
 						</AuthContextProvider>

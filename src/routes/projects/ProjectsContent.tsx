@@ -1,5 +1,5 @@
 import {
-	useState,
+	useContext,
 	useEffect
 } from 'react';
 import {
@@ -9,14 +9,14 @@ import {
 	orderBy
 } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { projectsContext } from '../../context'
 
 import ChildSection from '../../components/Section/ChildSection';
 
 import ProjectsAssembly from './ProjectsAssembly';
-import ProjectsContextProvider from '../../components/Providers/ProjectsContextProivder';
 
 const ProjectsContent = () => {
-	const [projects, setProjects] = useState<any[]>([]);
+	const { setProjects } = useContext(projectsContext);
 	const projectsCollectionRef = query(collection(db, 'projects'), orderBy('timestamp', 'desc'));
 
 	const getProjects = async () => {
@@ -26,16 +26,14 @@ const ProjectsContent = () => {
 
 	useEffect(() => {
 		getProjects()
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
 		<>
-			<ProjectsContextProvider value={{ projects }}>
-				<ChildSection>
-					<ProjectsAssembly />
-				</ChildSection>
-			</ProjectsContextProvider>
+			<ChildSection>
+				<ProjectsAssembly />
+			</ChildSection>
 		</>
 	)
 }
