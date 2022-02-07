@@ -6,14 +6,15 @@ import {
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
-import { StyledForm } from '../components/styled/StyledDiv';
+import { StyledForm } from '../components/styled/StyledForm';
 import { StyledPageTitle } from '../components/styled/StyledH2';
 
 const SignUp = () => {
 	const [registerEmail, setRegisterEmail] = useState('');
 	const [registerPassword, setRegisterPassword] = useState('');
 
-	const doSignUp = async () => {
+	const doSignUp = async (e: any) => {
+		e.preventDefault();
 		await createUserWithEmailAndPassword(
 			auth,
 			registerEmail,
@@ -23,7 +24,7 @@ const SignUp = () => {
 
 	return (
 		<>
-			<StyledForm>
+			<StyledForm onSubmit={doSignUp}>
 				<StyledPageTitle>sign up</StyledPageTitle>
 				<div id='login_email'>
 					<label
@@ -55,7 +56,6 @@ const SignUp = () => {
 					<input
 						type={'submit'}
 						value={'Sign Up'}
-						onClick={doSignUp}
 					/>
 				</div>
 			</StyledForm>

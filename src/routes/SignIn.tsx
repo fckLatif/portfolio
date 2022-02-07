@@ -6,14 +6,16 @@ import {
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
-import { StyledForm } from '../components/styled/StyledDiv';
+import { StyledForm } from '../components/styled/StyledForm';
 import { StyledPageTitle } from '../components/styled/StyledH2';
 
 const SignIn = () => {
 	const [loginEmail, setLoginEmail] = useState('');
 	const [loginPassword, setLoginPassword] = useState('');
 
-	const doSignIn = async () => {
+	const doSignIn = async (e: any) => {
+		console.log('bingus')
+		e.preventDefault();
 		await signInWithEmailAndPassword(
 			auth,
 			loginEmail,
@@ -23,7 +25,7 @@ const SignIn = () => {
 
 	return (
 		<>
-			<StyledForm>
+			<StyledForm onSubmit={doSignIn}>
 				<StyledPageTitle>sign in</StyledPageTitle>
 				<div id='login_email'>
 					<label
@@ -55,7 +57,6 @@ const SignIn = () => {
 					<input
 						type={'submit'}
 						value={'Sign In'}
-						onClick={doSignIn}
 					/>
 				</div>
 			</StyledForm>
